@@ -1,0 +1,527 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alyse's Tropical Salon | Expert Hair Care & Styling in Daytona Beach, FL</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1600&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 105, 180, 0.15) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .logo {
+            font-size: 5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ff69b4 0%, #ffb6d9 50%, #ff69b4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: #c8c8c8;
+            margin-bottom: 2rem;
+            letter-spacing: 3px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.5);
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #ff69b4 0%, #fff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.4);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 2px solid #ff69b4;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 105, 180, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(255, 105, 180, 0.3);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-name {
+            font-size: 1.5rem;
+            color: #ff69b4;
+            margin-bottom: 1rem;
+        }
+
+        .service-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-description {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        .about {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a1a2a 100%);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 2;
+            color: #ccc;
+        }
+
+        .highlight {
+            color: #ff69b4;
+            font-weight: bold;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .hours-item {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid #ff69b4;
+        }
+
+        .day {
+            color: #ff69b4;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .time {
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        .contact {
+            background: #0a0a0a;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border-radius: 20px;
+            border: 2px solid #ff69b4;
+            min-width: 250px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-label {
+            color: #ff69b4;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-detail {
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        .contact-detail a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-detail a:hover {
+            color: #ff69b4;
+        }
+
+        .testimonials {
+            background: #1a1a1a;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #ff69b4;
+        }
+
+        .testimonial-text {
+            color: #ccc;
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            color: #ff69b4;
+            font-weight: bold;
+        }
+
+        .stars {
+            color: #ff69b4;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer {
+            background: #000;
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+
+        .sparkle {
+            display: inline-block;
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 3rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .tagline {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <div class="logo">ALYSE'S</div>
+            <div class="tagline">TROPICAL SALON</div>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #aaa;">Expert Hair Care & Styling</p>
+            <a href="tel:5205604865" class="cta-button">CALL NOW: (520) 560-4865</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Experience Luxury Hair Care</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&q=80" alt="Salon Interior">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=600&q=80" alt="Hair Styling">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=600&q=80" alt="Professional Service">
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="services">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">✂️</div>
+                <div class="service-name">Women's Haircuts</div>
+                <div class="service-price">Expert Styling</div>
+                <p class="service-description">Professional haircuts tailored to your unique style and personality. Our experienced stylists create looks that complement your features.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💇</div>
+                <div class="service-name">Men's Haircuts</div>
+                <div class="service-price">Precision Cuts</div>
+                <p class="service-description">Modern and classic men's haircuts delivered with precision and attention to detail.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">👶</div>
+                <div class="service-name">Children's Haircuts</div>
+                <div class="service-price">Kid-Friendly</div>
+                <p class="service-description">Gentle and patient haircuts for children in a comfortable, welcoming environment.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <div class="service-name">Hair Coloring</div>
+                <div class="service-price">Vibrant Results</div>
+                <p class="service-description">Full color services including highlights, lowlights, balayage, and fashion colors.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💆</div>
+                <div class="service-name">Deep Conditioning</div>
+                <div class="service-price">Hair Therapy</div>
+                <p class="service-description">Restore and rejuvenate your hair with our intensive conditioning treatments.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🌊</div>
+                <div class="service-name">Perms & Styling</div>
+                <div class="service-price">Transform Your Look</div>
+                <p class="service-description">Create lasting curls or waves with our professional perm services and special occasion styling.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section about" id="about">
+        <h2 class="section-title">About Alyse's Tropical Salon</h2>
+        <div class="about-content">
+            <p>Welcome to <span class="highlight">Alyse's Tropical Salon</span>, Casa Grande's premier destination for expert hair care and styling. We bring a tropical touch to every service, creating a relaxing and vibrant atmosphere where beauty meets expertise.</p>
+            <p style="margin-top: 1.5rem;">Our talented team of professional stylists is dedicated to providing personalized service that exceeds your expectations. We specialize in <span class="highlight">women's, men's, and children's haircuts</span>, along with comprehensive color services, deep conditioning treatments, and styling.</p>
+            <p style="margin-top: 1.5rem;">At Alyse's, we believe everyone deserves to look and feel their best. Our commitment to quality service, combined with our welcoming atmosphere, makes us the salon of choice in Casa Grande. Come experience the difference that professional care and personal attention can make.</p>
+        </div>
+    </div>
+
+    <div class="section testimonials">
+        <h2 class="section-title">What Our Clients Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Alyse's Tropical Salon is amazing! The stylists are so talented and really listen to what you want. I always leave feeling beautiful and confident."</p>
+                <p class="testimonial-author">— Sarah M.</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Best salon in Casa Grande! The atmosphere is so relaxing and tropical. My color always turns out perfect, and the deep conditioning treatments are incredible."</p>
+                <p class="testimonial-author">— Jessica R.</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"I've been coming here for years and wouldn't go anywhere else. Professional service, friendly staff, and always great results!"</p>
+                <p class="testimonial-author">— Maria L.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="hours">
+        <h2 class="section-title">Hours of Operation</h2>
+        <div class="hours-grid">
+            <div class="hours-item">
+                <div class="day">Monday</div>
+                <div class="time">9:00 AM - 6:00 PM</div>
+            </div>
+            <div class="hours-item">
+                <div class="day">Tuesday</div>
+                <div class="time">9:00 AM - 6:00 PM</div>
+            </div>
+            <div class="hours-item">
+                <div class="day">Wednesday</div>
+                <div class="time">9:00 AM - 6:00 PM</div>
+            </div>
+            <div class="hours-item">
+                <div class="day">Thursday</div>
+                <div class="time">9:00 AM - 6:00 PM</div>
+            </div>
+            <div class="hours-item">
+                <div class="day">Friday</div>
+                <div class="time">9:00 AM - 6:00 PM</div>
+            </div>
+            <div class="hours-item">
+                <div class="day">Saturday</div>
+                <div class="time">9:00 AM - 5:00 PM</div>
+            </div>
+            <div class="hours-item">
+                <div class="day">Sunday</div>
+                <div class="time">Closed</div>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 2rem; color: #ff69b4; font-size: 1.2rem;">Walk-ins Welcome! Appointments Recommended</p>
+    </div>
+
+    <div class="section contact" id="contact">
+        <h2 class="section-title">Visit Us Today</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div class="contact-label">Location</div>
+                <div class="contact-detail">
+                    <a href="https://maps.google.com/?q=1307+N+Pinal+Ave+Casa+Grande+AZ" target="_blank">
+                        1307 N Pinal Ave<br>Casa Grande, AZ 85122
+                    </a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📞</div>
+                <div class="contact-label">Phone</div>
+                <div class="contact-detail">
+                    <a href="tel:5205604865">(520) 560-4865</a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">💳</div>
+                <div class="contact-label">Payment</div>
+                <div class="contact-detail">Cash & Credit Cards<br>Accepted</div>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 3rem; color: #aaa; font-size: 1.1rem;">
+            🅿️ Ample Parking Available | ♿ Wheelchair Accessible | 💆 Relaxing Atmosphere
+        </p>
+    </div>
+
+    <div class="footer">
+        <p><span class="sparkle">✨</span> © 2025 Alyse's Tropical Salon. All rights reserved. <span class="sparkle">✨</span></p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Professional Hair Care | Serving Casa Grande, AZ</p>
+    </div>
+</body>
+</html>
+```
